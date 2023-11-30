@@ -77,10 +77,18 @@
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CudaCompile Include="kernel.cu" />
+    <CudaCompile Include="DeviceFunc.cu" />
+    <CudaCompile Include="Kernel.cu" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="data.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="common.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="fread.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
