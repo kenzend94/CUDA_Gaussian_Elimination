@@ -1,6 +1,9 @@
 ﻿//Kernel function that executes on the device 
 #include "common.h" 
-#include<cuda.h> 
+#include <cuda.h>
+
+#include "cuda_runtime.h"
+#include "device_launch_parameters.h"
 
 __global__ void Kernel(float* a_d, float* b_d, int size)
 

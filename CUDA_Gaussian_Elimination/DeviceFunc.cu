@@ -4,6 +4,8 @@
 #include<cuda.h> 
 #include<stdio.h> 
 #include "common.h" 
+#include "cuda_runtime.h"
+#include "device_launch_parameters.h"
 
 __global__ void Kernel(float*, float*, int);
 
