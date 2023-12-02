@@ -2,7 +2,7 @@
 
 # Compile the CUDA and C++ files
 nvcc -c DeviceFunc.cu -o DeviceFunc.o
-nvcc -c Kernel.cu -o Kernel.o
+nvcc -c kernel.cu -o kernel.o
 nvcc -c fread.cpp -o fread.o
 nvcc -c main.cpp -o main.o
 
