@@ -7,7 +7,7 @@ nvcc -c fread.cpp -o fread.o
 nvcc -c main.cpp -o main.o
 
 # Link the object files into a single executable
-nvcc DeviceFunc.o Kernel.o fread.o main.o -o program
+nvcc DeviceFunc.o kernel.o fread.o main.o -o program
 
 # Optional: print a success message
 echo "Compilation and linking completed successfully."

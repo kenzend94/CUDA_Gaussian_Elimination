@@ -13,7 +13,7 @@ void getvalue(float** temp_h, int* numvar) {
 
     index = 0;
     // data.txt is on the same folder with the executable file
-    data = fopen("data.txt", "r");
+    data = fopen("data4.txt", "r");
 
 
     // data = fopen("B:\\data.txt","r"); 

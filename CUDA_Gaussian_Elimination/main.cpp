@@ -2,12 +2,23 @@
 #include "common.h"
 #include<stdlib.h>
 
+#define USE_CLOCK
+
+#ifdef USE_CLOCK
+#include <time.h>
+#endif
+
 int main(int argc, char** argv)
 {
     float* a_h = NULL;
     float* b_h = NULL;
     float* result, sum, rvalue;
     int numvar, j;
+
+    #ifdef USE_CLOCK
+        clock_t start, end;
+        double cpu_time_used;
+    #endif
 
     numvar = 0;
 
@@ -18,8 +29,17 @@ int main(int argc, char** argv)
     //Allocating memory on host for b_h 
     b_h = (float*)malloc(sizeof(float) * numvar * (numvar + 1));
 
+    #ifdef USE_CLOCK
+        start = clock();
+    #endif
+
     //Calling device function to copy data to device 
     DeviceFunc(a_h, numvar, b_h);
+
+    #ifdef USE_CLOCK
+        end = clock();
+        cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+    #endif
 
     //Showing the data 
     printf("\n\n");
@@ -59,7 +79,13 @@ int main(int argc, char** argv)
         printf("[X%d] = %+f\n", i, result[i]);
     }
 
+    #ifdef USE_CLOCK
+        printf("Time taken for DeviceFunc: %f seconds\n", cpu_time_used);
+    #endif
+
     // _getch(); 
-    scanf("%d", &j);
+    // scanf("%d", &j);
+
+    
     return 0;
 }
