@@ -12,7 +12,7 @@ void getvalue(float** temp_h, int* numvar) {
 
     index = 0;
     // data.txt is on the same folder with the executable file
-    data = fopen("data3.txt", "r");
+    data = fopen("data.txt", "r");
 
     if (data == NULL) // if file does not exist 
     {
@@ -36,7 +36,7 @@ void getvalue(float** temp_h, int* numvar) {
         //Reading the remaining data
         newchar = fgetc(data);
 
-        // printf("newchar: %c\n", newchar);
+        printf("newchar: %c\n", newchar);
 
         if (feof(data))
         {

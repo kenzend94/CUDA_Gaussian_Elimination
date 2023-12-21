@@ -1,0 +1,17 @@
+digraph "digraph" {
+	graph [bgcolor=black textcolor=white]
+	"Node 1" [label=1 color=white fontcolor=white shape=square]
+	"Node 0" [label=0 color=white fontcolor=white shape=square]
+	"Node 3" [label=d color=white fontcolor=white]
+	"Node 4" [label=s color=white fontcolor=white]
+	"Node 4" -> "Node 1" [color=white style=dashed]
+	"Node 5" [label=a color=white fontcolor=white]
+	"Node 5" -> "Node 1" [color=white style=dashed]
+	"Node 5" -> "Node 0" [color=white]
+	"Node 4" -> "Node 5" [color=white]
+	"Node 3" -> "Node 4" [color=white style=dashed]
+	"Node 6" [label=a color=white fontcolor=white]
+	"Node 6" -> "Node 1" [color=white style=dashed]
+	"Node 6" -> "Node 0" [color=white]
+	"Node 3" -> "Node 6" [color=white]
+}
