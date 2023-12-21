@@ -15,7 +15,7 @@ using namespace std;
 bool shouldPrint = true;
 
 // define data_file to read the matrix from a file
-const char *data_file = "data/data12.txt";
+const char *data_file = "data/data30.txt";
 
 // Define a small threshold value
 const double EPSILON = 1e-10;
