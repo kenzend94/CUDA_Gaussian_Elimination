@@ -1,32 +1,58 @@
 #include <iostream>
 #include <fstream>
+#include <cstdlib> // For rand() and srand()
+#include <ctime>   // For time()
+#include <string>
+#include <regex>
+
+using namespace std;
+
+string filename = "data/data60.txt";
+
+int extractNumberFromFilename(const string& filename) {
+    regex pattern(R"(data(\d+)\.txt)");
+    smatch matches;
+
+    if (regex_search(filename, matches, pattern) && matches.size() > 1) {
+        return stoi(matches.str(1));
+    }
+    return -1; // Return -1 if no number is found
+}
 
 int main() {
-    std::ofstream file("data2.txt"); // Create and open a text file
+    
+    int n = extractNumberFromFilename(filename);
 
-    if (!file) {
-        std::cerr << "Error opening file for writing." << std::endl;
+    if (n == -1) {
+        cerr << "Error: Number not found in filename." << endl;
         return 1;
     }
 
-    int n = 499;
+    ofstream file(filename);
+
+    if (!file) {
+        cerr << "Error opening file for writing." << endl;
+        return 1;
+    }
+
+    srand(time(NULL)); // Initialize random seed
+
     int m = n + 1;
 
-    file << n << std::endl; // Write the value of n to the first line
+    file << n << endl;
 
-    int number = 1; // Starting number for the sequence
-
-    for (int i = 0; i < n; i++) { // Outer loop runs n times
-        for (int j = 0; j < m; j++) { // Inner loop runs m times
-            file << number++; // Write the number
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            int random_number = rand() % 51 - 25; // Generate a random number between -25 and 25
+            file << random_number;
             if (j < m - 1) {
                 file << " "; // Space between numbers, not after the last number
             }
         }
-        file << std::endl; // Newline after each row of numbers
+        file << endl;
     }
 
-    file.close(); // Close the file
+    file.close();
 
     return 0;
 }

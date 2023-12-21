@@ -10,13 +10,12 @@
 
 using namespace std;
 
-// #define N 3 // Number of unknowns
 
 // define shouldPrint to print the matrix at each step
 bool shouldPrint = true;
 
 // define data_file to read the matrix from a file
-const char *data_file = "data4.txt";
+const char *data_file = "data/data12.txt";
 
 // Define a small threshold value
 const double EPSILON = 1e-10;
@@ -181,24 +180,7 @@ void forwardElim(double *mat, int numvar, bool printSteps) {
 }
 
 
-
-// Function for back substitution
-// void backSub(double mat[N][N+1]) {
-//     double x[N];  // An array to store solution
-
-//     for (int i = N-1; i >= 0; i--) {
-//         x[i] = mat[i][N];
-//         for (int j=i+1; j<N; j++) {
-//             x[i] -= mat[i][j]*x[j];
-//         }
-//         x[i] = x[i]/mat[i][i];
-//     }
-
-//     cout << "\nSolution for the system:\n";
-//     for (int i=0; i<N; i++)
-//         cout << "X" << i << " = " << x[i] << endl;
-// }
-
+// 
 void backSub(double *mat, int numvar) {
     double *x = new double[numvar];  // Dynamically allocate array for solution
 
@@ -212,32 +194,25 @@ void backSub(double *mat, int numvar) {
         }
         x[i] /= mat[i * (numvar + 1) + i];
     }
-
-    // add sleep to simulate a long computation
-    // this is to make the difference between the CPU and GPU more obvious
-    // this is not necessary for the assignment
-    // this is just for demonstration purposes
-
-    sleep(1);
-
     // Stop the timer
     auto end = chrono::high_resolution_clock::now();
 
     // Calculate the duration
-    auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
+    auto duration = chrono::duration_cast<chrono::nanoseconds>(end - start);
 
 
     cout << "\nSolution for the system:\n";
-    // for (int i = 0; i < numvar; i++)
-    //     cout << "X" << i << " = " << x[i] << endl;
+    for (int i = 0; i < numvar; i++)
+        cout << "X" << i << " = " << x[i] << endl;
 
-    for (int i = 0; i < numvar; i++) {
-        int numerator, denominator;
-        decimalToFrac(x[i], numerator, denominator);
-        cout << "X" << i << " = " << numerator << "/" << denominator << endl;
-    }
+    // Uncomment the following code to print the solution as fractions
+    // for (int i = 0; i < numvar; i++) {
+    //     int numerator, denominator;
+    //     decimalToFrac(x[i], numerator, denominator);
+    //     cout << "X" << i << " = " << numerator << "/" << denominator << endl;
+    // }
 
-    cout << "\nTime taken for back substitution: " << duration.count() << " microseconds" << endl;
+    cout << "\nTime taken for back substitution: " << duration.count() << " nanoseconds" << endl;
 
     delete[] x; // Free the dynamically allocated memory
 }
