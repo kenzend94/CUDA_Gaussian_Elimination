@@ -1,2 +1,5 @@
 # Add compiled gaussian_elimination to the list
 gaussian_elimination
+
+# Add folder .idea to the list
+.idea
