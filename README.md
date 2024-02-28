@@ -49,6 +49,17 @@ After setting the input file, compile and run the program with the following com
 nvcc -o gaussian_elimination gaussian_elimination.cu
 ./gaussian_elimination
 ```
+
+Instead of typing 'nvcc -o gaussian_elimination gaussian_elimination.cu' and './gaussian_elimination' every time you want to run the program, you can compile or compile and run the program with the following command:
+```bash
+make
+```
+or
+```bash
+make run
+```
+
+
 The program will print the output of the Gaussian elimination process, including the time taken for the computation.
 
 Output image:

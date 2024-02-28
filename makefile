@@ -17,3 +17,7 @@ $(TARGET): $(SRC)
 # Define the clean rule
 clean:
 	rm -f $(TARGET)
+
+# Define the run rule
+run: $(TARGET)
+	./$(TARGET)
